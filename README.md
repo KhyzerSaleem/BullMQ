@@ -1,15 +1,48 @@
 # Bull MQ Image Processing
 
-This is a Node.js project that uses Bull MQ, a distributed job queue, to process images uploaded to the server. It is a simple example of how to use Bull MQ to offload tasks from the main thread of an application.
+This repository demonstrates a complete backend setup using Node.js and BullMQ for managing background jobs, including job queues, delayed jobs, retries, and dead-letter queues (DLQs). It is designed for developers who want to learn how to handle asynchronous tasks in Node.js efficiently.
+
+Table of Contents
+
+Introduction
+
+- Technologies Used
+- Project Features
+- Getting Started
+- Understanding BullMQ
+- Job Lifecycle
+- Dead-Letter Queue (DLQ)
+- Example Usage
+- Future Improvements
+
+Introduction
+In modern backend development, handling long-running or resource-intensive tasks synchronously can block the main thread and slow down your application.
+This project demonstrates how to offload such tasks into queues using BullMQ, a robust Redis-based job queue for Node.js.
+
+Key use-cases:
+
+- Sending emails asynchronously
+- Image processing
+- Data importing/exporting
+- Any long-running task
+
+Technologies Used
+
+- Node.js – JavaScript runtime
+- Express.js – Backend API framework
+- BullMQ – Queue library for Node.js using Redis
+- Redis – In-memory data store (required for BullMQ)
+- Nodemon – Development tool for auto-restarting server
 
 ## Features
 
-* Image uploading with Multer
-* Image processing with Bull MQ
-* Support for multiple image sizes (thumb, medium, large)
-* Support for multiple image formats (jpg, png, webp)
-* Error handling with Bull MQ's built-in retry mechanism
-* Integration with Redis for storing job data
+- Job Queues: Add tasks to a queue for background processing.
+- Job Processing: Process jobs asynchronously without blocking the main thread.
+- Retries: Automatic retries if a job fails.
+- Delayed Jobs: Schedule jobs to run after a delay.
+- Dead-Letter Queue (DLQ): Capture failed jobs for inspection and reprocessing.
+- Job Event Handling: Track job progress, completion, or failure in real-time.
+- Error Logging: Store failed jobs with error details.
 
 ## How it works
 
@@ -24,11 +57,10 @@ This is a Node.js project that uses Bull MQ, a distributed job queue, to process
 
 The project uses a `.env` file to configure the Bull MQ connection and the Redis connection. The file should contain the following variables:
 
-* `MONGO_DB_URI`: The connection string for the MongoDB database.
-* `REDIS_HOST`: The hostname of the Redis server.
-* `REDIS_PORT`: The port number of the Redis server.
+- `MONGO_DB_URI`: The connection string for the MongoDB database.
+- `REDIS_HOST`: The hostname of the Redis server.
+- `REDIS_PORT`: The port number of the Redis server.
 
 ## Installation
 
 To install the project, run the following commands:
-
